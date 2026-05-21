@@ -1,182 +1,139 @@
-# 🧠 TSE Support Knowledge Base
+# 🔐 2FA / Login Support SOP (Intent-Based)
 
-This document is used by the AI Support Assistant to troubleshoot system issues, validate data problems, and guide resolution steps.
-
----
-
-# 🧭 System Overview
-
-## Core Systems
-- Backend: AWS Lambda / Microservices
-- Automation: n8n workflows
-- Database: PostgreSQL / MySQL
-- Storage: S3 / Google Sheets
-- Monitoring: CloudWatch Logs / Alerts
+This document defines how to handle 2FA-related support requests using intent-first troubleshooting.
 
 ---
 
-# 🚨 Common Issues & Playbooks
+# 🧭 1. Core Principle
+
+Do NOT require perfect request formatting.
+
+Instead:
+- Focus on understanding if the user is asking about 2FA or login issues
+- Extract available information from the message
+- Ask follow-up questions if needed
 
 ---
 
-## 🔥 1. AWS Lambda Timeout
+# 🧠 2. Intent Detection Rule
 
-### Symptom
-- Function fails with:
+If the user message includes any of the following:
 
+- 2FA not working
+- login failed
+- cannot access account
+- OTP issue
+- authenticator issue
+- password problem
 
-### Possible Causes
-- Heavy initialization code
-- No internet access (missing NAT Gateway in VPC)
-- External API latency
-- Timeout too low
-- Cold start issues
+👉 Treat as a VALID SUPPORT REQUEST
 
-### Troubleshooting Steps
-1. Check CloudWatch logs
-2. Compare execution time vs timeout setting
-3. Verify if Lambda is inside VPC
-4. Check outbound internet access (NAT Gateway)
-5. Identify slow external API calls
-
-### Fixes
-- Increase timeout (e.g. 10s → 30–60s)
-- Move heavy logic outside handler
-- Add caching where possible
-- Ensure NAT Gateway exists if needed
+Even if details are incomplete.
 
 ---
 
-## 🔐 2. IAM Permission Denied
+# 🔍 3. Information Extraction (Best Effort)
 
-### Symptom
+From user message, try to identify:
 
+- Store / Account ID (if present)
+- Name (if present)
+- Mobile number (if present)
+- Type of issue (2FA / login / password)
 
-### Possible Causes
-- Missing IAM policy
-- Wrong role attached
-- Cross-account access not configured
-- Incorrect resource ARN
-
-### Troubleshooting Steps
-1. Identify IAM role/user in error
-2. Check attached policies
-3. Validate allowed actions
-4. Verify resource ARN matches environment
-
-### Fixes
-- Add required IAM permissions
-- Attach correct role to service
-- Fix ARN scope (dev/prod mismatch)
+⚠️ If missing, do NOT block processing—just mark as “missing info”.
 
 ---
 
-## 📊 3. Data Mismatch (Reports vs System)
+# 🧭 4. Support Flow (MANDATORY)
 
-### Symptom
-- Google Sheet / report does not match system data
+## STEP 1: Confirm Issue Type
+Start by confirming:
 
-### Possible Causes
-- Delayed sync
-- Incorrect query filters
-- Manual edits in spreadsheet
-- Cache or stale data
-
-### Troubleshooting Steps
-1. Identify source of truth system
-2. Compare timestamps (system vs report)
-3. Validate query filters
-4. Check last sync execution logs
-
-### Fixes
-- Re-run sync pipeline
-- Fix query conditions
-- Lock spreadsheet edits
-- Add validation rules
+- "Is this a 2FA/login issue?"
 
 ---
 
-## 🔁 4. n8n Workflow Failure
+## STEP 2: Basic User Check (FIRST TROUBLESHOOTING STEP)
 
-### Symptom
-- Workflow does not run or fails mid-process
+Always ask:
 
-### Possible Causes
-- Broken node connection
-- Invalid credentials
-- API failure
-- Timeout in HTTP request node
-
-### Troubleshooting Steps
-1. Open n8n execution logs
-2. Identify failed node
-3. Check input/output data
-4. Test API manually
-5. Validate credentials
-
-### Fixes
-- Fix node configuration
-- Refresh credentials
-- Add retry logic
-- Handle API failures gracefully
+- Have you tried rechecking your password?
+- Are you using the correct login credentials?
+- Did you recently change your password?
+- Are you able to access your email or phone for OTP?
 
 ---
 
-## 🧪 Standard TSE Troubleshooting Flow
+## STEP 3: Attempt Basic Resolution
 
-Always follow this structure:
+Before reset:
 
-1. Understand the issue  
-2. Identify affected system  
-3. Check logs / evidence  
-4. Determine possible root causes  
-5. Suggest fix or workaround  
-6. Ask for missing details if unclear  
+- Ask user to retry login
+- Confirm password correctness
+- Check if issue is temporary
 
 ---
 
-## 📥 Required Information From Users
+## STEP 4: Decide Next Action
 
-If issue is unclear, always ask:
+### If resolved:
+✔ No reset needed  
+✔ Inform user issue is resolved  
 
-- Full error message
-- Timestamp of issue
-- Affected system (AWS, n8n, DB, etc.)
-- Screenshots or logs
-- Recent changes before issue
-
----
-
-## 🧠 Root Cause Thinking Framework
-
-When analyzing issues, always consider:
-
-- Configuration issue?
-- Permission issue?
-- Network/VPC issue?
-- Data inconsistency?
-- Performance/timeout issue?
-- Human/manual error?
+### If NOT resolved:
+➡ Proceed to 2FA reset evaluation  
 
 ---
 
-## 💬 Communication Style
+# 🔐 5. 2FA Reset Condition
 
-- Use simple language first
-- Avoid jargon unless needed
-- Break steps clearly
-- Be calm and structured
-- Ask clarifying questions when needed
+Only proceed if:
+
+- User confirms password is correct
+- Basic login troubleshooting failed
+- Issue clearly related to 2FA/authenticator
+- No security risk detected
 
 ---
 
-## 📌 Future Expansion Areas
+# ⚙️ 6. 2FA Reset Execution
 
-Add more playbooks:
+If approved:
 
-- API Gateway failures
-- Database connection issues
-- CI/CD deployment failures
-- Security incidents
-- Payment processing issues
-- Third-party API failures
+1. Locate account (if ID provided)
+2. Remove existing 2FA binding
+3. Reset authentication setup
+4. Trigger re-enrollment
+5. Log action in system
+
+---
+
+# 📢 7. Communication Rule
+
+Always:
+
+- Start with confirmation question
+- Do NOT immediately ask for full details
+- Guide step-by-step
+- Keep language simple
+
+---
+
+# 🚨 8. Escalation Rules
+
+Escalate if:
+
+- Identity cannot be confirmed
+- Account cannot be found
+- Suspicious activity detected
+- Multiple failed attempts
+
+---
+
+# 🧠 9. Support Behavior Rule
+
+- Always prioritize intent over format
+- Do NOT reject due to missing fields
+- Extract what is available
+- Ask follow-up questions naturally
