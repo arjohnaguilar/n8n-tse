@@ -1,6 +1,7 @@
+
 # 🔐 2FA / Login Support SOP (Intent-Based – Growsari TSE)
 
-This SOP guides handling of 2FA and login-related concerns using an **intent-first approach**, ensuring smooth and user-friendly support.
+This SOP guides handling of 2FA, login, and password-related concerns using an **intent-first approach**.
 
 ---
 
@@ -10,26 +11,24 @@ Do **NOT** require perfect formatting from users.
 
 Instead:
 
-* Focus on identifying if the concern is related to **2FA or login**
-* Extract any available details
-* Ask follow-up questions only when needed
+* Identify if concern is **2FA, login, or password-related**
+* Extract available details
+* Ask follow-ups only when needed
 
 ---
 
 # 🧠 2. Intent Detection Rule
 
-If the user mentions any of the following:
+If the user mentions:
 
 * 2FA not working
 * Login failed
 * Cannot access account
 * OTP issue
 * Authenticator problem
-* Password issue
+* Password issue / forgot password
 
-👉 Treat it as a **VALID SUPPORT REQUEST**
-
-Even if details are incomplete.
+👉 Treat as a **VALID SUPPORT REQUEST**
 
 ---
 
@@ -44,8 +43,8 @@ Try to identify:
 
 ⚠️ If missing:
 
-* Do **NOT** block the process
-* Mark as **“missing info”** and continue
+* Do **NOT** block
+* Mark as **missing info** and continue
 
 ---
 
@@ -53,30 +52,26 @@ Try to identify:
 
 ## ✅ STEP 1: Confirm Issue Type
 
-Start with a simple confirmation:
-
-> “Just to confirm, is this a 2FA or login issue?”
+> “Just to confirm, is this a login, 2FA, or password issue?”
 
 ---
 
 ## 🔍 STEP 2: Basic User Check (FIRST TROUBLESHOOTING)
 
-Always ask:
+Ask:
 
 * Have you rechecked your password?
 * Are you using the correct login credentials?
 * Did you recently change your password?
-* Are you able to receive OTP via email or phone?
+* Can you receive OTP via email or phone?
 
 ---
 
 ## 🔄 STEP 3: Attempt Basic Resolution
 
-Before any reset:
-
 * Ask user to retry login
 * Confirm password accuracy
-* Check if issue might be temporary
+* Check if issue is temporary
 
 ---
 
@@ -85,71 +80,82 @@ Before any reset:
 ### ✔ If RESOLVED:
 
 * No reset needed
-* Inform user clearly
+* Inform user
 
 ### ❌ If NOT RESOLVED:
 
-* Proceed to **2FA Reset Evaluation**
+* Proceed based on issue type
 
 ---
 
 # 🔐 5. 2FA Reset Conditions
 
-ONLY proceed if ALL are true:
+ONLY proceed if:
 
-* User confirms password is correct
-* Basic troubleshooting failed
-* Issue is clearly related to 2FA/authenticator
-* No suspicious activity detected
+* Password is confirmed correct
+* Troubleshooting failed
+* Issue is clearly 2FA-related
+* No suspicious activity
 
 ---
 
 # ⚙️ 6. 2FA Reset Execution
 
-If approved:
-
-1. Locate account (if ID available)
-2. Remove existing 2FA binding
-3. Reset authentication setup
+1. Locate account
+2. Remove 2FA binding
+3. Reset authentication
 4. Trigger re-enrollment
-5. Log action in system
+5. Log action
 
 ---
 
-# 📢 7. Communication Rules
+# 🔑 7. Forgot Password Handling (NEW)
 
-Always:
+If user **forgot password**:
 
-* Start with a confirmation question
-* Avoid asking for all details at once
+❌ Do NOT attempt manual reset
+
+👉 Action:
+
+* Inform user that password reset must be handled securely
+* **Escalate to TSE**
+* **File a ticket in the ticketing system**
+
+---
+
+# 📢 8. Communication Rules
+
+* Start with confirmation
+* Do NOT ask everything at once
 * Guide step-by-step
-* Use simple, clear language
+* Keep it simple and clear
 
 ---
 
-# 🚨 8. Escalation Rules (UPDATED FOR TSE)
+# 🚨 9. Escalation Rules (TSE)
 
 Escalate if:
 
+* Forgot password request
 * Identity cannot be confirmed
-* Account cannot be found
-* Suspicious activity detected
+* Account not found
+* Suspicious activity
 * Multiple failed attempts
-* Issue persists after reset/troubleshooting
+* Issue persists after troubleshooting/reset
 
 👉 Escalation Path:
 
-* Contact the **TSE in POST Tech GC**, OR
-* File a ticket via the **official ticketing system**
+* Contact **TSE in POST Tech GC**, OR
+* File a ticket in the **ticketing system**
 
 ---
 
-# 🧠 9. Support Behavior Rules
+# 🧠 10. Support Behavior Rules
 
-* Prioritize **intent over format**
-* Do **NOT** reject due to missing fields
+* Prioritize intent over format
+* Do NOT reject incomplete requests
 * Extract what you can
 * Ask follow-ups naturally
-* Always aim to **resolve before escalating**
+* Resolve first before escalating
 
----
+
