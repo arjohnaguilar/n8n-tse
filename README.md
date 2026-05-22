@@ -1,32 +1,33 @@
-# 🔐 2FA / Login Support SOP (Intent-Based)
+# 🔐 2FA / Login Support SOP (Intent-Based – Growsari TSE)
 
-This document defines how to handle 2FA-related support requests using intent-first troubleshooting.
+This SOP guides handling of 2FA and login-related concerns using an **intent-first approach**, ensuring smooth and user-friendly support.
 
 ---
 
 # 🧭 1. Core Principle
 
-Do NOT require perfect request formatting.
+Do **NOT** require perfect formatting from users.
 
 Instead:
-- Focus on understanding if the user is asking about 2FA or login issues
-- Extract available information from the message
-- Ask follow-up questions if needed
+
+* Focus on identifying if the concern is related to **2FA or login**
+* Extract any available details
+* Ask follow-up questions only when needed
 
 ---
 
 # 🧠 2. Intent Detection Rule
 
-If the user message includes any of the following:
+If the user mentions any of the following:
 
-- 2FA not working
-- login failed
-- cannot access account
-- OTP issue
-- authenticator issue
-- password problem
+* 2FA not working
+* Login failed
+* Cannot access account
+* OTP issue
+* Authenticator problem
+* Password issue
 
-👉 Treat as a VALID SUPPORT REQUEST
+👉 Treat it as a **VALID SUPPORT REQUEST**
 
 Even if details are incomplete.
 
@@ -34,66 +35,72 @@ Even if details are incomplete.
 
 # 🔍 3. Information Extraction (Best Effort)
 
-From user message, try to identify:
+Try to identify:
 
-- Store / Account ID (if present)
-- Name (if present)
-- Mobile number (if present)
-- Type of issue (2FA / login / password)
+* Store / Account ID
+* Name
+* Mobile number
+* Issue type (2FA / login / password)
 
-⚠️ If missing, do NOT block processing—just mark as “missing info”.
+⚠️ If missing:
+
+* Do **NOT** block the process
+* Mark as **“missing info”** and continue
 
 ---
 
 # 🧭 4. Support Flow (MANDATORY)
 
-## STEP 1: Confirm Issue Type
-Start by confirming:
+## ✅ STEP 1: Confirm Issue Type
 
-- "Is this a 2FA/login issue?"
+Start with a simple confirmation:
+
+> “Just to confirm, is this a 2FA or login issue?”
 
 ---
 
-## STEP 2: Basic User Check (FIRST TROUBLESHOOTING STEP)
+## 🔍 STEP 2: Basic User Check (FIRST TROUBLESHOOTING)
 
 Always ask:
 
-- Have you tried rechecking your password?
-- Are you using the correct login credentials?
-- Did you recently change your password?
-- Are you able to access your email or phone for OTP?
+* Have you rechecked your password?
+* Are you using the correct login credentials?
+* Did you recently change your password?
+* Are you able to receive OTP via email or phone?
 
 ---
 
-## STEP 3: Attempt Basic Resolution
+## 🔄 STEP 3: Attempt Basic Resolution
 
-Before reset:
+Before any reset:
 
-- Ask user to retry login
-- Confirm password correctness
-- Check if issue is temporary
-
----
-
-## STEP 4: Decide Next Action
-
-### If resolved:
-✔ No reset needed  
-✔ Inform user issue is resolved  
-
-### If NOT resolved:
-➡ Proceed to 2FA reset evaluation  
+* Ask user to retry login
+* Confirm password accuracy
+* Check if issue might be temporary
 
 ---
 
-# 🔐 5. 2FA Reset Condition
+## 🎯 STEP 4: Decide Next Action
 
-Only proceed if:
+### ✔ If RESOLVED:
 
-- User confirms password is correct
-- Basic login troubleshooting failed
-- Issue clearly related to 2FA/authenticator
-- No security risk detected
+* No reset needed
+* Inform user clearly
+
+### ❌ If NOT RESOLVED:
+
+* Proceed to **2FA Reset Evaluation**
+
+---
+
+# 🔐 5. 2FA Reset Conditions
+
+ONLY proceed if ALL are true:
+
+* User confirms password is correct
+* Basic troubleshooting failed
+* Issue is clearly related to 2FA/authenticator
+* No suspicious activity detected
 
 ---
 
@@ -101,7 +108,7 @@ Only proceed if:
 
 If approved:
 
-1. Locate account (if ID provided)
+1. Locate account (if ID available)
 2. Remove existing 2FA binding
 3. Reset authentication setup
 4. Trigger re-enrollment
@@ -109,31 +116,40 @@ If approved:
 
 ---
 
-# 📢 7. Communication Rule
+# 📢 7. Communication Rules
 
 Always:
 
-- Start with confirmation question
-- Do NOT immediately ask for full details
-- Guide step-by-step
-- Keep language simple
+* Start with a confirmation question
+* Avoid asking for all details at once
+* Guide step-by-step
+* Use simple, clear language
 
 ---
 
-# 🚨 8. Escalation Rules
+# 🚨 8. Escalation Rules (UPDATED FOR TSE)
 
 Escalate if:
 
-- Identity cannot be confirmed
-- Account cannot be found
-- Suspicious activity detected
-- Multiple failed attempts
+* Identity cannot be confirmed
+* Account cannot be found
+* Suspicious activity detected
+* Multiple failed attempts
+* Issue persists after reset/troubleshooting
+
+👉 Escalation Path:
+
+* Contact the **TSE in POST Tech GC**, OR
+* File a ticket via the **official ticketing system**
 
 ---
 
-# 🧠 9. Support Behavior Rule
+# 🧠 9. Support Behavior Rules
 
-- Always prioritize intent over format
-- Do NOT reject due to missing fields
-- Extract what is available
-- Ask follow-up questions naturally
+* Prioritize **intent over format**
+* Do **NOT** reject due to missing fields
+* Extract what you can
+* Ask follow-ups naturally
+* Always aim to **resolve before escalating**
+
+---
